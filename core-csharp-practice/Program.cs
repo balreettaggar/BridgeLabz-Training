@@ -1,4 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using core_csharp_practice;
 
-Patterns.StarPattern();
+//Patterns.StarPattern();
+//Patterns.FloyddPattern();
+//Patterns.HollowRectanglePattern();
+
+//BasicProblems.ReverseString();
+//BasicProblems.FibonacciSeries();
+if(BasicProblems.StringAnagram()) Console.WriteLine("Yes");
