@@ -14,4 +14,8 @@ using core_csharp_practice;
 //PracticeProblems.HeightConverted();
 //PracticeProblems.Calculator();
 //PracticeProblems.temperatureConversion();
-PracticeProblems.SumUntilZero();
+//PracticeProblems.SumUntilZero();
+
+Arrays.RotateLeft();
+
+//Console.WriteLine("Hello!");

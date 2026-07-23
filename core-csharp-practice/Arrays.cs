@@ -23,5 +23,35 @@ namespace core_csharp_practice
             }
             Console.WriteLine(largest + " " + secondLargest);
         }
+
+    
+
+        public static void RotateLeft()
+        {
+            int[] arr = { 1, 2, 3, 4, 5, 6 };
+            int k = 3;
+            k = k % arr.Length;
+            ReverseArray(arr, 0, arr.Length - 1);
+            ReverseArray(arr, k, arr.Length-1);
+            ReverseArray(arr, 0, k-1);
+            for (int i = 0; i <= arr.Length - 1; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+        }
+
+        static void ReverseArray(int[]arr, int i, int j)
+        {
+      
+            while (i < j)
+            {
+                int first = arr[i];
+                arr[i] = arr[j];
+                arr[j] = first;
+                i++;
+                j--;
+            }
+        }
+        
     }
 }
