@@ -7,4 +7,11 @@ using core_csharp_practice;
 
 //BasicProblems.ReverseString();
 //BasicProblems.FibonacciSeries();
-if(BasicProblems.StringAnagram()) Console.WriteLine("Yes");
+//if(BasicProblems.StringAnagram()) Console.WriteLine("Yes");
+//Arrays.LargestElement();
+//PracticeProblems.ProfitandLoss();
+//PracticeProblems.DiscountFee();
+//PracticeProblems.HeightConverted();
+//PracticeProblems.Calculator();
+//PracticeProblems.temperatureConversion();
+PracticeProblems.SumUntilZero();
