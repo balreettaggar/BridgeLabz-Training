@@ -68,5 +68,21 @@ namespace core_csharp_practice
             }
             Console.WriteLine(sum);
         }
+
+        public static void Factors()
+        {
+            int num = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[10];
+            int ptr = 0;
+            for(int i=1; i<=num/2; i++)
+            {
+                if (ptr >= arr.Length) break;
+                if (num % i == 0) arr[ptr++] = i;
+            }
+            for(int i=0; i<arr.Length; i++)
+            {
+                if(arr[i]!=0) Console.WriteLine(arr[i]);
+            }
+        }
     }
 }
