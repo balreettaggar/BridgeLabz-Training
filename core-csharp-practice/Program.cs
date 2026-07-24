@@ -16,6 +16,13 @@ using core_csharp_practice;
 //PracticeProblems.temperatureConversion();
 //PracticeProblems.SumUntilZero();
 
-Arrays.RotateLeft();
+//Arrays.RotateLeft();
 
 //Console.WriteLine("Hello!");
+
+//Arrays.Multiply();
+//Arrays.UntilZero();
+//Arrays.FootBallHeight();
+//Arrays.Factors();
+//Arrays.Copy2D();
+Arrays.FizzandBuzz();
