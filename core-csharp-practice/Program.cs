@@ -25,4 +25,14 @@ using core_csharp_practice;
 //Arrays.FootBallHeight();
 //Arrays.Factors();
 //Arrays.Copy2D();
-Arrays.FizzandBuzz();
+//Arrays.FizzandBuzz();
+
+//Methods.Factors();
+
+//int num = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine(Methods.SumOfNaturals(num));
+//Console.WriteLine(num * (num + 1) / 2);
+
+//Methods.Quadratic();
+//Methods.AvgMinMax();
+Methods.NumberChecker();
