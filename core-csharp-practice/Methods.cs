@@ -120,5 +120,21 @@ namespace core_csharp_practice
             else Console.WriteLine("Not an armstrong");
             
         }
+
+        public static void OTPgenerator()
+        {
+            int[] arr = new int[10];
+            for(int i=0; i<arr.Length; i++)
+            {
+                arr[i] = Random.Shared.Next(100000, 1000000);
+                Console.WriteLine(arr[i]);
+            }
+            for(int i=0; i<arr.Length; i++)
+            {
+                
+                bool exists = Array.Exists(arr, element => element == arr[i]);
+                if (exists) Console.WriteLine("Not random");
+            }
+        }
     }
 }

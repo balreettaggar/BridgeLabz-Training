@@ -35,4 +35,5 @@ using core_csharp_practice;
 
 //Methods.Quadratic();
 //Methods.AvgMinMax();
-Methods.NumberChecker();
+//Methods.NumberChecker();
+Methods.OTPgenerator();
