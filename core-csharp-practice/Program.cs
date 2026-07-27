@@ -36,4 +36,7 @@ using core_csharp_practice;
 //Methods.Quadratic();
 //Methods.AvgMinMax();
 //Methods.NumberChecker();
-Methods.OTPgenerator();
+//Methods.OTPgenerator();
+//Methods.Calender();
+//Methods.EuclideanDistance();
+Methods.CollinearPoints();
