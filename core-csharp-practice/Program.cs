@@ -52,4 +52,12 @@ using core_csharp_practice;
 //Strings.Frequent()
 //Strings.RemoveChar();
 //Strings.Anagrams();
-Strings.ReplaceWord();
+//Strings.ReplaceWord();
+
+//PracticeAssignment.Guess();
+//PracticeAssignment.maxNo();
+//PracticeAssignment.prime();
+//PracticeAssignment.Fibonacci();
+//PracticeAssignment.GCDandLCM();
+//PracticeAssignment.Calculator();
+PracticeAssignment.DateAndTime();
