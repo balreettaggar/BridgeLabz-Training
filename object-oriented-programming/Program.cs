@@ -14,4 +14,7 @@ using object_oriented_programming;
 //Constructors.CarMethod();
 
 //Keywords.BankMethod();
-Keywords.HospitalMethod();
+//Keywords.HospitalMethod();
+
+//DesignPrinciples.LibBookMethod();
+SnakesAndLadders.SnakesAndLaddersMethod();
