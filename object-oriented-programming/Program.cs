@@ -17,4 +17,6 @@ using object_oriented_programming;
 //Keywords.HospitalMethod();
 
 //DesignPrinciples.LibBookMethod();
-SnakesAndLadders.SnakesAndLaddersMethod();
+//SnakesAndLadders.SnakesAndLaddersMethod();
+
+Inheritance.InheritanceMethod();
