@@ -19,4 +19,6 @@ using object_oriented_programming;
 //DesignPrinciples.LibBookMethod();
 //SnakesAndLadders.SnakesAndLaddersMethod();
 
-Inheritance.InheritanceMethod();
+//Inheritance.InheritanceMethod();
+
+Encapsulation.EncapsulationMethods();
