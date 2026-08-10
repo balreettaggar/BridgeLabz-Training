@@ -5,4 +5,9 @@ using advanced_c_sharp;
 using System.Text.RegularExpressions;
 
 //RegexProblems.ValidateUsername();
-RegexProblems.LicensePlate();
+//RegexProblems.LicensePlate();
+
+//CollectionsClass.ReverseList();
+//CollectionsClass.ReverseLinkedList()
+//CollectionsClass.RotateList();
+CollectionsClass.BinaryNumbers();

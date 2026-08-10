@@ -13,7 +13,7 @@ namespace advanced_c_sharp
         static internal void ValidateUsername()
         {
             string username = "Balreet_10";
-            bool result = Regex.IsMatch(username, @"[A-Za-z][A-Za-z0-9_]{4,14}$");
+            bool result = Regex.IsMatch(username, @"^[A-Za-z][A-Za-z0-9_]{4,14}$");
             Console.WriteLine(result == true);
         }
 
