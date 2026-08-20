@@ -9,4 +9,11 @@ using data_structures_algorithms;
 //Performance.SortingMethod();
 //Performance.StringPerf();
 //Performance.FilePerf();
-Performance.FiboPerf();
+//Performance.FiboPerf();
+
+//ExceptionClass.FileMethod();
+//ExceptionClass.ValidMaths();
+//ExceptionClass.checkAge();
+//ExceptionClass.ArrExc();
+//ExceptionClass.StreamExc();
+ExceptionClass.InterestExc();
