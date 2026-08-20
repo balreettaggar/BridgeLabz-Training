@@ -4,4 +4,9 @@
 using data_structures_algorithms;
 
 //Sorting.BubbleSort();
-Sorting.SelectionSort();
+//Sorting.SelectionSort();
+//Performance.SearchingMethod();
+//Performance.SortingMethod();
+//Performance.StringPerf();
+//Performance.FilePerf();
+Performance.FiboPerf();
