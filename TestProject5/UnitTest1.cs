@@ -57,8 +57,8 @@ namespace TestProject5
         [Test]
         public void OverstayRule_ReturnsTrue()
         {
-            VehicleSession session =new VehicleSession( 101,1,DateTime.Now.AddHours(-2),DateTime.Now);
-            var rule = manager.CreateOverstayRule( TimeSpan.FromMinutes(30));
+            VehicleSession session =new VehicleSession(101,1,DateTime.Now.AddHours(-2),DateTime.Now);
+            var rule = manager.CreateOverstayRule(TimeSpan.FromMinutes(30));
             Assert.IsTrue(rule(session));
         }
 
@@ -85,6 +85,48 @@ namespace TestProject5
             manager.ExitVehicle(102,new DateTime(2026, 9, 1, 11, 30, 0),
             TimeSpan.FromMinutes(30));
             Assert.AreEqual(10, manager.PeakOccupancyHour());
+        }
+
+        [Test]
+        public void ReservedSpace_ThrowsPermitViolation()
+        {
+            manager.AddSpace(new ParkingSpace(1, true, true, false));
+            Assert.Throws<PermitViolationException>(() =>
+                manager.EnterVehicle(101, true, false, DateTime.Now, 100, 90));
+        }
+
+        [Test]
+        public void ExitWithoutEntry_ThrowsException()
+        {
+            Assert.Throws<InvalidOperationException>(() =>
+                manager.ExitVehicle(101, DateTime.Now, TimeSpan.FromMinutes(30)));
+        }
+
+        [Test]
+        public void ParkingSession_DisposesGateBeforeBilling()
+        {
+            string file = Path.GetTempFileName();
+            GateController gate = new GateController();
+            StreamWriter writer = new StreamWriter(file);
+            ParkingSession session = new ParkingSession(gate, writer);
+            gate.Open();
+            session.Dispose();
+            Assert.AreEqual("Gate", session.DisposalOrder[0]);
+            Assert.AreEqual("Billing", session.DisposalOrder[1]);
+            File.Delete(file);
+        }
+
+        [Test]
+        public void ParkingSession_ClosesGate()
+        {
+            string file = Path.GetTempFileName();
+            GateController gate = new GateController();
+            StreamWriter writer = new StreamWriter(file);
+            ParkingSession session = new ParkingSession(gate, writer);
+            gate.Open();
+            session.Dispose();
+            Assert.IsFalse(gate.IsOpen);
+            File.Delete(file);
         }
     }
 }
