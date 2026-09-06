@@ -1,147 +1,158 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace advanced_c_sharp
 {
-    internal class CSVdata
+    public class Employee
     {
-        internal static void ReadStudents()
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Department { get; set; }
+        public double Salary { get; set; }
+    }
+
+    public class myStudent
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public double Marks { get; set; }
+    }
+    public class CSVdata
+    {
+
+        public static void ReadStudents()
         {
             string filePath = "students.csv";
-
-            using (StreamReader reader = new StreamReader(filePath))
+            string[] lines = File.ReadAllLines(filePath);
+            for (int i = 1; i < lines.Length; i++)
             {
+                string[] words = lines[i].Split(',');
+                Console.WriteLine($"Student's ID is {words[0]}");
+                Console.WriteLine($"Student's Name is {words[1]}");
+                Console.WriteLine($"Student's Age is {words[2]}");
+                Console.WriteLine($"Student's Marks are {words[3]}");
+            }
+        }
 
-                string header = reader.ReadLine();
-                string line;
-                while ((line = reader.ReadLine()) != null)
+        public static void WriteEmployees()
+        {
+            List<Employee> myList = new List<Employee>()
+            {
+                new Employee
                 {
-                    string[] data = line.Split(',');
+                    ID = 1,
+                    Name = "Balreet",
+                    Department = "CSE",
+                    Salary = 25000.00,
+                },
+                new Employee
+                {
+                    ID = 2,
+                    Name = "Vishvas",
+                    Department = ".NET",
+                    Salary = 30000.00,
+                },
+                new Employee
+                {
+                    ID = 3,
+                    Name = "harsh",
+                    Department = "Backend",
+                    Salary = 30000,
+                }
+            };
+            using (StreamWriter writer = new StreamWriter("employees.csv"))
+            using (CsvWriter csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(myList);
+            }
+            
+        }
 
-                    int id = int.Parse(data[0]);
-                    string name = data[1];
-                    int age = int.Parse(data[2]);
-                    double marks = double.Parse(data[3]);
+        public static void countEmployees()
+        {
+            using (StreamReader sr = new StreamReader("employees.csv"))
+            using(CsvReader csvr = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                int count = csvr.GetRecords<Employee>().Count();
+                Console.WriteLine(count);
+            }
+        }
 
-                    Console.WriteLine(
-                        $"ID: {id}, Name: {name}, Age: {age}, Marks: {marks}"
-                    );
+       public static void FilterStudentss()
+        {
+            using(StreamReader sr = new StreamReader("students.csv"))
+            using(CsvReader csv = new CsvReader(sr, CultureInfo.InvariantCulture))
+            {
+                var students = csv.GetRecords<myStudent>();
+                var quilifiedStudents = students.Where(student => student.Marks > 80);
+                foreach (var student in quilifiedStudents)
+                {
+                    Console.WriteLine("Student ID is : " + student.ID);
+                    Console.WriteLine("Student Name is : " + student.Name);
+                    Console.WriteLine("Student Age is : " + student.Age);
+                    Console.WriteLine("Student Marks is : " + student.Marks);
                 }
             }
         }
 
-        internal static void WriteEmployees()
+        public static void SearchEmployee()
         {
-            string filePath = "employees.csv";
-
-            using (StreamWriter writer = new StreamWriter(filePath))
+            string name = "Balreet";
+            using (StreamReader sr = new StreamReader("employees.csv"))
+            using (CsvReader csv = new CsvReader(sr, CultureInfo.InvariantCulture))
             {
-
-                writer.WriteLine("ID,Name,Department,Salary");
-
-                writer.WriteLine("1,Raj,IT,50000");
-                writer.WriteLine("2,Aman,HR,45000");
-                writer.WriteLine("3,Simran,Finance,55000");
-                writer.WriteLine("4,Neha,IT,60000");
-                writer.WriteLine("5,Karan,Marketing,48000");
-            }
-
-            Console.WriteLine("Employee data written successfully.");
-        }
-
-        internal static void CountStudents()
-        {
-            string filePath = "students.csv";
-
-            int count = 0;
-
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                // Skip header
-                reader.ReadLine();
-
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
+                var employees = csv.GetRecords<Employee>();
+                foreach(Employee emp in employees)
                 {
-                    count++;
-                }
-            }
-
-            Console.WriteLine($"Number of records: {count}");
-        }
-
-        internal static void FilterStudents()
-        {
-            string filePath = "students.csv";
-
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                // Skip header
-                reader.ReadLine();
-
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] data = line.Split(',');
-
-                    int id = int.Parse(data[0]);
-                    string name = data[1];
-                    int age = int.Parse(data[2]);
-                    double marks = double.Parse(data[3]);
-
-                    if (marks > 80)
+                    if(emp.Name == name)
                     {
-                        Console.WriteLine(
-                            $"ID: {id}, Name: {name}, Age: {age}, Marks: {marks}"
-                        );
+                        Console.WriteLine(emp.ID + " " + emp.Salary);
                     }
                 }
             }
         }
 
-        internal static void SearchEmployee()
+        public static void UpdateSalary()
         {
-            string filePath = "employees.csv";
 
-            Console.Write("Enter employee name: ");
-            string searchName = Console.ReadLine();
-
-            bool found = false;
-
-            using (StreamReader reader = new StreamReader(filePath))
+            using (StreamReader sr = new StreamReader("employees.csv")) 
+            using(CsvReader csr = new CsvReader(sr, CultureInfo.InvariantCulture))
             {
-                reader.ReadLine();
-
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
+                List<Employee> myList = csr.GetRecords<Employee>().ToList();
+                foreach (Employee emp in myList)
                 {
-                    string[] data = line.Split(',');
-
-                    string name = data[1];
-
-                    if (name.Equals(searchName, StringComparison.OrdinalIgnoreCase))
+                    if(emp.Department == "CSE")
                     {
-                        string department = data[2];
-                        double salary = double.Parse(data[3]);
-
-                        Console.WriteLine($"Department: {department}");
-                        Console.WriteLine($"Salary: {salary}");
-
-                        found = true;
-                        break;
+                        emp.Salary = emp.Salary * 1.1;
                     }
                 }
+
+                using (StreamWriter sw = new StreamWriter("updated_Employees.csv"))
+                using (CsvWriter csw = new CsvWriter(sw, CultureInfo.InvariantCulture))
+                {
+                    csw.WriteRecords(myList);
+                }
+
             }
 
-            if (!found)
+        }
+
+        public static void SortEmployee()
+        {
+            using(StreamReader sr = new StreamReader("employees.csv"))
+                using(CsvReader csv = new CsvReader(sr, CultureInfo.InvariantCulture))
             {
-                Console.WriteLine("Employee not found.");
+                var topTwo = csv.GetRecords<Employee>().OrderByDescending(emp => emp.Salary).Take(2);
+                foreach(var emp in topTwo){
+                    Console.Write(emp.ID + " " + emp.Name +" " + emp.Department+ " " + emp.Salary);
+                }
             }
         }
     }
