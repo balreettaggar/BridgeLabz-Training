@@ -1,0 +1,5 @@
+{"TradeIdn":"TR1","CoinSymbol":"BTC","Type":"BUY","Quantity":0.5,"PriceUsd":60000.0}
+{"TradeIdn":"TR2","CoinSymbol":"ETH","Type":"SELL","Quantity":2.0,"PriceUsd":3000.0}
+{"TradeIdn":"TR3","CoinSymbol":"DOGE9","Type":"BUY","Quantity":1000.0,"PriceUsd":0.1}
+{"TradeIdn":"TR4","CoinSymbol":"BTC","Type":"SELL","Quantity":0.0,"PriceUsd":61400.0}
+{"TradeIdn":"TR5","CoinSymbol":"SOL","Type":"BUY","Quantity":10.0,"PriceUsd":140.0}

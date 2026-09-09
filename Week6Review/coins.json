@@ -1,0 +1,16 @@
+{
+  "coins": [
+    {
+      "symbol": "BTC",
+      "feePercent": 0.5
+    },
+    {
+      "symbol": "ETH",
+      "feePercent": 0.4
+    },
+    {
+      "symbol": "SOL",
+      "feePercent": 0.3
+    }
+  ]
+}
